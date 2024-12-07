@@ -1,36 +1,56 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Plac Docs
+description: Documentation pour Plac, application de suivi de chantier
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Documentation pour Plac
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/favicon.svg
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get started
+      link: /installation/getting-started
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+      variant: primary
+    - text: Guides
+      link: /guides/
+      icon: right-arrow
+      variant: primary
+    - text: Voir Plac
+      link: https://gestion-plac.fr/
       icon: external
-      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Aside } from '@astrojs/starlight/components';
+
+
+<Aside type="tip">
+
+Les sections badgées `DEV` sont destinées aux développeurs.
+
+Les sections badgées `User` sont destinées aux utilisateurs qui souhaitent utiliser Plac.
+
+</Aside>
 
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+    <Card title="Pré-requis" icon="setting">
+		Suivez les instructions de la section [Pré-requis](/installation/getting-started#prérequis) avant d'utiliser Plac.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="API Documentation" icon="open-book">
+		Voir la section [API](/api).
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+    <Card title="App Documentation" icon="open-book">
+		Voir la section [App](/app).
 	</Card>
 </CardGrid>
+
+## Liens utiles 
+
+- [OpenApi with NelmioBundle](https://symfony.com/bundles/NelmioApiDocBundle/current/index.html) (Bundle pour l'api avec OpenApi)
+- [OpenApi doc](https://swagger.io/docs/specification/about/)
+- [JWT with LexikJWTAuthenticationBundle](https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html)
+
+## Authors
+
+[@Pierrepineaup](https://github.com/Pierrepineaup)

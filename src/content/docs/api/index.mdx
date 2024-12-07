@@ -1,0 +1,26 @@
+---
+title: Introduction
+description: API for Plac project
+sidebar:
+  order: 1
+---
+import { Card, CardGrid, Aside } from '@astrojs/starlight/components';
+
+Plac API est une API RESTful qui permet de gérer la data pour Plac. Cette API est utilisée par l'application web `Admin Plac` pour gérer les boutiques. Elle est aussi utilisé par le `Bundle Plac` qui permet à chacune des boutiques de récupérer les informations qui la concerne. 
+
+<CardGrid>
+    <Card title="Configuration" icon="setting">
+		Suivez les instructions de la [Configuration](./configuration.mdx) avant d'utiliser Plac API.
+	</Card>
+	<Card title="Developpement" icon="open-book">
+		Voir la section [developpement](./Developpement/) pour tous ce qui concerne le developpement de l'API.
+	</Card>
+</CardGrid>
+
+## OpenApi
+
+L'API est documentée avec OpenApi (& Swagger UI). 
+
+<Aside title="OpenApi">
+Vous pouvez consulter la documentation de l'API en vous rendant sur `/api/doc` sur l'API (`https://exemple.com/api/doc`).
+</Aside>

@@ -1,0 +1,45 @@
+---
+title: Repository
+description: Configuration et utilisation des repositories pour Plac
+---
+import {LinkCard, CardGrid, Aside, Tabs, TabItem, Code, FileTree} from "@astrojs/starlight/components"
+
+## Configuration
+
+Pour utiliser toutes les fonctionnalités de l'API, il est nécessaire de configurer les repositories pour les entités de l'API.
+
+`EntityNameRepository.php`
+
+```php
+<?php
+
+namespace App\Repository\App;
+
+use App\Entity\App\EntityName;
+use App\Plac\Repository\AbstractCoreRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+class EntityNameRepository extends AbstractCoreRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, EntityName::class, 'alias');
+    }
+}
+```
+
+Dans cet exemple il faut remplacer `EntityName` par le nom de l'entité en question et `alias` par l'alias de la table dans la base de données ( `c` pour `client`...)
+
+## AbstractCoreRepository
+
+`AbstractCoreRepository` implémente les fonctions de base pour les repositories ainsi que d'autres fonctions utiles pour les repositories. 
+
+`AbstractCoreRepository` est une classe abstraite donc non utilisable directement (il faut l'`extends`).
+
+## Customisation des fonctions
+
+<Aside type="tip">
+Les fonctions de `AbstractCoreRepository` peuvent être surclassées dans le repository de l'entité en question si besoin.
+</Aside>
+
+Vous pouvez aussi créer de nouvelles fonctions dans le repository de l'entité en question.

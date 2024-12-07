@@ -1,0 +1,40 @@
+---
+title: Développement
+description: Documentation pour le développement de l'API Plac
+---
+
+import { LinkCard, CardGrid, Aside } from '@astrojs/starlight/components';
+
+Cette section est destinée au développement de l'API Plac. Vous y trouverez des informations sur les différentes fonctionnalités de l'API, des exemples de code et des guides pour vous aider à développer sur Plac.
+
+<CardGrid>
+    <LinkCard
+        title="Diagrams"
+        href="./diagrams"
+        description="Voir les diagrammes des BDD de type App | Admin"
+    />
+    <LinkCard
+        title="Doctrine"
+        href="./doctrine"
+        description="Voir la configuration de Doctrine pour Plac"
+    />
+    <LinkCard
+        title="Fixtures"
+        href="./fixtures"
+        description="Utiliser les fixtures pour peupler la BDD"
+    />
+    <LinkCard
+        title="Repository"
+        href="./repository"
+        description="Voir la configuration des repositories pour Plac"
+    />
+    <LinkCard
+        title="Service"
+        href="./service"
+        description="Voir la configuration des services pour Plac"
+    />
+</CardGrid>
+
+<Aside>
+    La configuration par defaut de `Doctrine` et des `Repositories` ne permet pas d'utiliser de les fonctionnalités `Core` de l'application.
+</Aside>

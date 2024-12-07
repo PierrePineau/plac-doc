@@ -1,0 +1,32 @@
+---
+title: Configuration
+description: Configuration de l'API
+sidebar:
+  order: 2
+---
+
+import {Card, CardGrid, Aside} from "@astrojs/starlight/components"
+
+## .env.local
+
+Vous <b>devez</b> créer un fichier `.env.local` à la racine du projet pour définir des paramètres uniquement pour vous en local
+
+```bash
+APP_ENV=dev
+API_AUTH_SKIP=true
+ALLIAS_PHP='/Applications/MAMP/bin/php/php8.2.0/bin/php'
+DATABASE_URL_ADMIN="mysql://{username}:{password}@{host}:{port}/Plac-admin"
+```
+
+| Parameter            | Value         | Description                                              |
+| :------------------- | :------------ | :------------------------------------------------------- |
+| `APP_ENV`            | **Optionnal** | `dev` ou `prod`                                          |
+| `ALLIAS_PHP`         | **Required**  | Chemin vers le php que vous souhaitez utiliser           |
+| `API_AUTH_SKIP`      | **Optionnal** | `true` ou `false`                                        |
+| `DATABASE_URL_ADMIN` | **Required**  | `mysql://{username}:{password}@{host}:{port}/{database}` |
+
+<Aside title="API_AUTH_SKIP" type="caution">`API_AUTH_SKIP` permet de sauter l'authentification en tant que `ROLES_ADMIN` ou `ROLES_SUPER_ADMIN` pour tester les routes sans avoir à se reconnecter. À savoir que ce paramètre fonctionne uniquement si il est utilisé avec une ip = `127.0.0.1`</Aside>
+
+<Aside title="ALLIAS_PHP" type="caution">`ALLIAS_PHP` doit etre défini (et avec une version `php >= 8.2`) pour que Plac fonctionne</Aside>
+
+<Aside title="Database">N'oubliez pas de générer `DATABASE_URL_ADMIN` (avec doctrine) la BDD après l'avoir défini dans votre fichier</Aside>

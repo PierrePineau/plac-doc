@@ -1,0 +1,109 @@
+---
+title: Commandes API
+description: Les commandes utiles pour Plac API
+sidebar:
+  order: 3
+---
+
+import {Card, CardGrid, Aside, Tabs, TabItem} from "@astrojs/starlight/components"
+
+
+## Créer un administrateur
+
+L'administrateur est un compte qui a accès à l'ensemble des organisations de Plac
+La commande va vous demander de renseigner les informations de l'administrateur.
+
+<Tabs>
+  <TabItem label="Shortcut">
+    ```bash
+    php bin/console a:u:c
+    ```
+  </TabItem>
+  <TabItem label="Default">
+    ```bash
+    php bin/console admin:user:create
+    ```
+  </TabItem>
+</Tabs>
+
+## Mettre à jour les BDD
+
+Pour mettre à jours les bases de données, il suffit de lancer la commande suivante :
+
+<Tabs>
+  <TabItem label="Shortcut">
+    ```bash
+    php bin/console m:migration
+    ```
+  </TabItem>
+  <TabItem label="Default">
+    ```bash
+    php bin/console make:migration
+    ```
+  </TabItem>
+</Tabs>
+
+Et ensuite :
+
+<Tabs>
+  <TabItem label="Shortcut">
+    ```bash
+    php bin/console d:m:m
+    ```
+  </TabItem>
+  <TabItem label="Default">
+    ```bash
+    php bin/console doctrine:migrations:migrate
+    ```
+  </TabItem>
+</Tabs>
+{/* 
+## Run une fixture sur toutes les BDD
+
+<Aside>
+Les fixtures permettent de générer des données dans la BDD, utilisé pour les tests ou pour générer des données de base.
+</Aside>
+
+Pour lancer un groupe de fixture sur toutes les bases de données, il suffit de lancer la commande suivante :
+
+<Tabs>
+  <TabItem label="Shortcut">
+    ```bash
+    php bin/console a:f:r groupName -y
+    ```
+  </TabItem>
+  <TabItem label="Default">
+    ```bash
+    php bin/console admin:fixtures:run groupName --yes
+    ```
+  </TabItem>
+</Tabs>
+
+## Run un groupe de test
+
+<Aside>
+Les groupes de test sont géré via les fixtures dans `DataFixtures/Test`
+</Aside>
+
+Pour lancer un groupe de test sur la BDD de test (A configurer manuellement sur vos fichiers de test), il suffit de lancer la commande suivante :
+
+<Tabs>
+  <TabItem label="Shortcut">
+    ```bash
+    php bin/console t:r -g cartTest -c
+    ```
+    
+    `-g | --group=` Définir le groupe de test (Nom du groupe fixture) **Requis**
+
+    `-c | --clear` pour vider le fichier de log avant le test
+  </TabItem>
+  <TabItem label="Default">
+    ```bash
+    php bin/console test:run --group=cartTest -c
+    ```
+
+    `-g | --group=` Définir le groupe de test (Nom du groupe fixture) **Requis**
+    
+    `-c | --clear` pour vider le fichier de log avant le test
+  </TabItem>
+</Tabs> */}

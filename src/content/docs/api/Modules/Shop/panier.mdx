@@ -1,0 +1,67 @@
+---
+title: Panier
+description: Documentation pour le panier dans le module shop
+---
+
+import { LinkCard, CardGrid, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Le panier permet de gérer les produits ajoutés par les utilisateurs avant de passer à la commande.
+Il peut modifier les quantités, supprimer des produits et passer à la commande.
+
+<Aside type="tip">
+    Pour passer une commande, il faut que l'utilisateur soit connecté.
+</Aside>
+
+## Ajout d'un élément
+
+A savoir que la quantité du produit est modifié uniquement au moment de la validation de la commande. (**Si l'option `Cart temporaire` n'est pas activé**)
+
+<Aside >
+    `Cart temporaire` non disponible pour le moment, elle permet de gérer les quantités des produits ajoutés au panier en temps réel. Avec un delai de "réservation" pour les produits.
+</Aside>
+
+### Produit simple
+
+Lorsqu'un utilisateur ajoute un produit au panier, l'API doit vérifier que le produit est disponible et que la quantité demandée est disponible.
+
+Si le produit utilise des variantes, l'API doit vérifier que la variante est disponible.
+
+Si le produit contient des customs fields, l'API doit vérifier que les customs fields obligatoire et optionnel choisis par l'utilisateur sont disponibles.
+
+### Pack de produits
+
+Lorsqu'un utilisateur ajoute un pack de produits au panier, l'API doit vérifier que les produits du pack sont disponibles et que les quantités demandées sont disponibles.
+
+On vérifie que les produits à l'intérieur du pack, s'il possède des variantes, sont disponibles.
+
+On vérifie que les produits à l'intérieur du pack, s'il possède des customs fields, sont renseignés.
+
+### Carte cadeau
+
+<Aside >
+    Non disponible pour le moment
+</Aside>
+
+Pour connaitre le format de la requête pour l'ajout d'un élément au panier, voir la documentation de la commande `Shop.Cart.Item POST /api/doc#/Shop.Cart.Item/post_app_shop_cart_cartitem_index`
+
+### Calcul du total du panier
+
+<Aside >
+    Voir `CartCalculator.php`
+</Aside>
+
+| Parameter                 | Description                        |
+| :--------                 | :------- |
+| `quantity`                | Correspond à la quantité du produit |
+| `weight`                  | Le poids du produit (au moment du calcul gloabl, multiplié par la quantité) |
+| `variantAdditionalPrice`  | (HT / TTC) Le prix additionnel de la variante si présent |
+| `customFieldGroupsPrice`  | (HT / TTC) Le prix additionnel des custom fields si présent |
+| `additionalPrice`         | (HT / TTC) Le prix additionnel variant + custom fields |
+| `price`                   | (HT / TTC) Le prix du produit sans les prix additionnels |
+| `discount`                | Le montant de la réduction (Appliqué sur le TTC) |
+| `priceDiscount`           | Le prix du produit avec la réduction (sans les prix additionnels) |
+| `subTotal`                | Le prix total du produit (avec réduction et les prix additionnels) |
+| `total`                   | Le prix total * la quantité |
+
+Pour le calcul au global du panier. On vient ajouter sur le total du panier les frais de livraison.
+Le prix final est le totalTTC + les frais de livraison - les promotions (Les codes promo appliquable sur le panier)

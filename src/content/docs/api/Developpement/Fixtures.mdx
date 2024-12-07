@@ -1,0 +1,86 @@
+---
+title: Fixtures
+description: Les fixtures permettent de générer des entrées par default dans la BDD
+---
+
+import {LinkCard, CardGrid, Aside, Tabs, TabItem, Code, FileTree} from "@astrojs/starlight/components"
+
+<Aside>Pour en savoir plus sur les fixtures, [Voir doc symfony](https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html)</Aside>
+
+## Commandes Utiles
+
+<Tabs>
+  <TabItem label="Liste fixture">
+    Pour voir les fixtures disponibles
+
+    ```bash
+    php bin/console debug:container --tag=doctrine.fixture.orm
+    ```
+
+  </TabItem>
+  <TabItem label="Commande fixture">
+    Pour voir les commandes disponibles
+
+    ```bash
+    php bin/console doctrine:fixtures:load --help
+    ```
+
+  </TabItem>
+</Tabs>
+
+Pour générer des fixtures dans un groupe spécifique et une connexion spécifique
+
+```bash
+php bin/console doctrine:fixtures:load --append --group=shop --em=site_demo
+```
+
+<Aside>
+Le flag `--append` permet de ne pas vider la BDD avant de générer les entrées.
+
+Le flag `--group` permet de spécifier le groupe de fixtures à générer.
+
+Le flag `--em` permet de spécifier la connexion à utiliser. (Par default c'est `admin`)
+
+</Aside>
+
+## Groupe 
+
+### Plac.app.create
+
+Le groupe `Plac.app.create` (`--group=Plac.app.create`) est un groupe de fixtures qui permet de générer des entrées par default dans la BDD d'une nouvelle boutique/site.
+
+Il permet par exemple de générer les `orderStatus` ou les `menus` par default.
+
+Si vous avez besoin de générer des entrées par default pour une nouvelle boutique/site, vous pouvez utiliser ce groupe.
+
+<Aside type="caution">Les fixtures du groupe `Plac.app.create` est utilisé dans la commande `generateBDD` pour générer des entrées par default dans la BDD.</Aside>
+
+<Aside>
+Les fixtures du groupe `Plac.app.create` sont dans le dossier `src/DataFixtures/Plac`
+
+<FileTree>
+-   src
+    -   DataFixtures
+        -   Plac
+            -   …
+
+</FileTree>
+
+</Aside>
+
+### Other Groups
+
+Vous pouvez créer d'autres groupes de fixtures pour générer des entrées par default dans la BDD. (Pour de la fake data par exemple)
+
+<Aside>
+Les fixtures pour les tests sont dans le dossier `src/DataFixtures/Test`
+
+<FileTree>
+-   src
+    -   DataFixtures
+        -   Demo
+            -   …
+
+</FileTree>
+
+</Aside>

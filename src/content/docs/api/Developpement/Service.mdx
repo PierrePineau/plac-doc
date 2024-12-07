@@ -1,0 +1,31 @@
+---
+title: Service
+description: Configuration et utilisation des services pour Plac
+---
+import {LinkCard, CardGrid, Aside, Tabs, TabItem, Code, FileTree} from "@astrojs/starlight/components"
+
+## Configuration
+
+Les services pour les entités de l'API sont configurés dans le dossier `src/Plac/Service`. Il doivent être nommés `EntityNameManager.php`. et faire `extends` de `AbstractCoreService`.
+
+<Aside type="note">
+Les fonctions de `create`, `update`, `add`, `remove` sont par défaut configurées pour retourner une erreur "not allowed". Vous pouvez les surclasser dans le service de l'entité en question si besoin.
+</Aside>
+
+## AbstractCoreService
+
+`AbstractCoreService` est une classe abstraite donc non utilisable directement (il faut l'`extends`).
+
+<Aside type="tip">
+`AbstractCoreService` est disponible dans `src/Plac/Service`.
+</Aside>
+
+`AbstractCoreService` implémente les fonctions de base pour les services ainsi que d'autres fonctions utiles pour les services.
+
+## Customisation des fonctions
+
+<Aside type="tip">
+Les functions de `AbstractCoreService` peuvent être surclassées dans le service de l'entité en question si besoin.
+</Aside>
+
+Vous pouvez aussi créer de nouvelles fonctions dans le service de l'entité en question.
