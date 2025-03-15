@@ -13,20 +13,54 @@ Vous <b>devez</b> créer un fichier `.env.local` à la racine du projet pour dé
 
 ```bash
 APP_ENV=dev
-API_AUTH_SKIP=true
-ALLIAS_PHP='/Applications/MAMP/bin/php/php8.2.0/bin/php'
-DATABASE_URL_ADMIN="mysql://{username}:{password}@{host}:{port}/Plac-admin"
+TRUSTED_IPS=""
+APP_DEV_MODE=true
+DATABASE_URL="mysql://{username}:{password}@{host}:{port}/plac-dev"
+###> OAUTH ###
+GOOGLE_OAUTH_CLIENT_ID=""
+GOOGLE_OAUTH_CLIENT_SECRET=""
+OAUTH_RETURN_URL=""
+###< OAUTH ###
+
+###> STRIPE ###
+STRIPE_SECRET_KEY=
+STRIPE_PUBLIC_KEY=
+###< STRIPE ###
+
+###> BREVO ###
+BREVO_API_KEY=""
+###< BREVO ###
+
+###> AWS S3 ###
+AWS_S3_KEY=""
+AWS_S3_SECRET=""
+AWS_S3_BUCKET=""
+AWS_S3_REGION=""
+AWS_S3_ENDPOINT=""
+AWS_S3_FOLDER_PREFIX=""
+###< AWS S3 ###
 ```
 
 | Parameter            | Value         | Description                                              |
 | :------------------- | :------------ | :------------------------------------------------------- |
 | `APP_ENV`            | **Optionnal** | `dev` ou `prod`                                          |
 | `ALLIAS_PHP`         | **Required**  | Chemin vers le php que vous souhaitez utiliser           |
-| `API_AUTH_SKIP`      | **Optionnal** | `true` ou `false`                                        |
-| `DATABASE_URL_ADMIN` | **Required**  | `mysql://{username}:{password}@{host}:{port}/{database}` |
-
-<Aside title="API_AUTH_SKIP" type="caution">`API_AUTH_SKIP` permet de sauter l'authentification en tant que `ROLES_ADMIN` ou `ROLES_SUPER_ADMIN` pour tester les routes sans avoir à se reconnecter. À savoir que ce paramètre fonctionne uniquement si il est utilisé avec une ip = `127.0.0.1`</Aside>
+| `DATABASE_URL` | **Required**  | `mysql://{username}:{password}@{host}:{port}/{database}` |
+| `TRUSTED_IPS`        | **Required**  | Liste des IP autorisées à accéder à l'API                |
+| `APP_DEV_MODE`       | **Required**  | `true` ou `false` pour activer le mode développement     |
+| `GOOGLE_OAUTH_CLIENT_ID` | **Required**  | ID du client Google OAuth2                               |
+| `GOOGLE_OAUTH_CLIENT_SECRET` | **Required**  | Secret du client Google OAuth2                           |
+| `OAUTH_RETURN_URL`   | **Required**  | URL de redirection après connexion OAuth2                |
+| `STRIPE_SECRET_KEY`  | **Required**  | Clé secrète Stripe                                       |
+| `STRIPE_PUBLIC_KEY`  | **Required**  | Clé publique Stripe
+| `BREVO_API_KEY`      | **Required**  | Clé API Brevo |
+| `AWS_S3_KEY`         | **Required**  | Clé AWS S3 |
+| `AWS_S3_SECRET`      | **Required**  | Secret AWS S3 |
+| `AWS_S3_BUCKET`      | **Required**  | Bucket AWS S3 |
+| `AWS_S3_REGION`      | **Required**  | Région AWS S3 |
+| `AWS_S3_ENDPOINT`    | **Required**  | Endpoint AWS S3 |
+| `AWS_S3_FOLDER_PREFIX` | **Required** | Préfixe de dossier AWS S3 |
 
 <Aside title="ALLIAS_PHP" type="caution">`ALLIAS_PHP` doit etre défini (et avec une version `php >= 8.2`) pour que Plac fonctionne</Aside>
 
-<Aside title="Database">N'oubliez pas de générer `DATABASE_URL_ADMIN` (avec doctrine) la BDD après l'avoir défini dans votre fichier</Aside>
+<Aside title="Database">N'oubliez pas de générer `DATABASE_URL` (avec doctrine) la BDD après l'avoir défini dans votre fichier</Aside>

@@ -4,52 +4,28 @@ description: Configuration et utilisation de Doctrine pour Plac
 ---
 import {LinkCard, CardGrid, Aside, Tabs, TabItem, Code} from "@astrojs/starlight/components"
 
-<Aside>
-Pour en savoir plus sur multiple connection avec doctrine, [Voir doc symfony](https://symfony.com/doc/current/doctrine/multiple_entity_managers.html)
-</Aside>
-
-<Aside>
-`Admin` et `App` représentent les deux modèles de BDD utilisés dans le projet.
-
-À savoir qu'il n'y a qu'une seule BDD pour `Admin` (Elle contient les informations de tous les sites) et une BDD par site sur le modèle de `App`.
-
-</Aside>
-
 ## Commandes Utiles
 
-Créer une `Entity` dans un modèle spécifique (`Admin` ou `App`)
+Créer une `Entity` avec le maker de Symfony.
 
-<Tabs>
-  <TabItem label="App">
-    ```bash
-    php bin/console make:Entity App\\EntityName
-    ```
-  </TabItem>
-  <TabItem label="Admin">
-    ```bash
-    php bin/console make:Entity Admin\\EntityName
-    ```
-  </TabItem>
-</Tabs>
+```bash
+    php bin/console make:Entity EntityName
+```
 
 Pour en savoir plus sur le format des BDD.s, vous pouvez consulter les schémas :
 - [Diagrams](./Diagrams.mdx)
 
 ### Update DBB
 
-`--force` flag est optionnel, il permet de ne pas demander de confirmation avant de mettre à jour la BDD.
+Pour mettre à jour la BDD, vous pouvez utiliser la commande suivante :
 
-<Tabs>
-  <TabItem label="Shortcut">
-    ```bash
-    php bin/console a:d:u --force
-    ```
-  </TabItem>
-  <TabItem label="Default">
-    ```bash
-    php bin/console admin:doctrine:update
-    ```
-  </TabItem>
-</Tabs>
+```bash
+    php bin/console make:migration
+```
 
+Puis pour appliquer les migrations :
+
+```bash
+    php bin/console doctrine:migrations:migrate
+```
 

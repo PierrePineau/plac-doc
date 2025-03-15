@@ -1,6 +1,8 @@
 ---
 title: Installation
-description: Installation de API | App
+description: Installation de API
+sidebar:
+    order: 2
 ---
 import { Aside, LinkCard, Card, Steps } from '@astrojs/starlight/components';
 
@@ -21,10 +23,10 @@ import { Aside, LinkCard, Card, Steps } from '@astrojs/starlight/components';
 3. Vous <b>devez</b> créer un fichier `.env.local` à la racine du projet pour définir des paramètres uniquement pour vous en local
     ```bash
     APP_ENV=dev
-    API_AUTH_SKIP=true
-    ALLIAS_PHP='/Applications/MAMP/bin/php/php8.2.0/bin/php'
-    # DATABASE EN LOCAL
-    #DATABASE_URL="mysql://{username}:{password}@{host}:{port}/{database}"
+    TRUSTED_IPS=""
+    APP_DEV_MODE=true
+    DATABASE_URL="mysql://{username}:{password}@{host}:{port}/plac-dev"
+    ...
     ```
     
     <LinkCard
@@ -34,6 +36,3 @@ import { Aside, LinkCard, Card, Steps } from '@astrojs/starlight/components';
     />
 </Steps>
 
-## App
-
-{/* TODO : LEO  */}
