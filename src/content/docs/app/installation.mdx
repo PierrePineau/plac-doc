@@ -1,40 +1,45 @@
 ---
 title: Installation
-description: Installation App
+description: Installation de l'APP
 sidebar:
   order: 2
 ---
-import { Aside, LinkCard, Card, Steps } from '@astrojs/starlight/components';
+
+import { Aside, LinkCard, Card, Steps } from "@astrojs/starlight/components";
 
 ## APP
 
-{/* TODO : LEO  */}
-{/* 
 <Steps>
 
-1. Cloner le projet à partir de Github
+1.  Cloner le projet à partir de Github
 
-2. Installer les dépendances du projet avec `Composer`
+2.  Installer les dépendances du projet avec `Npm`
     ```bash
-    composer install
+    npm install
     ```
-3. Générer les clées encryptages utilisées par `JWT`
+3.  Générer les clées encryptages utilisées par `JWT`
     ```bash
     php bin/console lexik:jwt:generate-keypair
-    ``` 
-3. Vous <b>devez</b> créer un fichier `.env.local` à la racine du projet pour définir des paramètres uniquement pour vous en local
-    ```bash
-    APP_ENV=dev
-    API_AUTH_SKIP=true
-    ALLIAS_PHP='/Applications/MAMP/bin/php/php8.2.0/bin/php'
-    # DATABASE EN LOCAL
-    #DATABASE_URL="mysql://{username}:{password}@{host}:{port}/{database}"
     ```
-    
+4.  Vous <b>devez</b> créer un fichier `.env` à la racine du projet pour définir des paramètres uniquement pour vous en local
+
+    ```bash
+    NEXT_PUBLIC_API_URL="{urlApi}"
+
+    ###> AWS S3 ###
+    AWS_S3_KEY=""
+    AWS_S3_SECRET=""
+    AWS_S3_BUCKET=""
+    AWS_S3_REGION=""
+    AWS_S3_ENDPOINT=""
+    AWS_S3_FOLDER_PREFIX=""
+    ###< AWS S3 ###
+    ```
+
     <LinkCard
-        title="Configuration API"
-        description="Consultez la page de configuration de l'API pour plus d'information"
-        href="/api/configuration.mdx"
+      title="Configuration API"
+      description="Consultez la page de configuration de l'API pour plus d'information"
+      href="/api/configuration.mdx"
     />
+
 </Steps>
- */}

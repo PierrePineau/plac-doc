@@ -1,10 +1,39 @@
 ---
 title: Configuration
-description: Configuration de l'API
+description: Configuration de l'APP
 sidebar:
-    order: 2
+  order: 2
 ---
 
-import {Card, CardGrid, Aside} from "@astrojs/starlight/components"
+import { Card, CardGrid, Aside } from "@astrojs/starlight/components";
 
-LEO AJOUTE ICI DOC APP
+## .env
+
+Vous <b>devez</b> créer un fichier `.env` à la racine du projet pour définir des paramètres uniquement pour vous en local
+
+```bash
+NEXT_PUBLIC_API_URL="{urlApi}"
+
+###> AWS S3 ###
+AWS_S3_KEY=""
+AWS_S3_SECRET=""
+AWS_S3_BUCKET=""
+AWS_S3_REGION=""
+AWS_S3_ENDPOINT=""
+AWS_S3_FOLDER_PREFIX=""
+###< AWS S3 ###
+```
+
+| Parameter              | Value        | Description               |
+| :--------------------- | :----------- | :------------------------ |
+| `NEXT_PUBLIC_API_URL`  | **Required** | Url de votre api          |
+| `AWS_S3_KEY`           | **Required** | Clé AWS S3                |
+| `AWS_S3_SECRET`        | **Required** | Secret AWS S3             |
+| `AWS_S3_BUCKET`        | **Required** | Bucket AWS S3             |
+| `AWS_S3_REGION`        | **Required** | Région AWS S3             |
+| `AWS_S3_ENDPOINT`      | **Required** | Endpoint AWS S3           |
+| `AWS_S3_FOLDER_PREFIX` | **Required** | Préfixe de dossier AWS S3 |
+
+<Aside title="NEXT_PUBLIC_API_URL" type="caution">
+  `NEXT_PUBLIC_API_URL` doit etre défini pour pouvoir utiliser l'api de plac
+</Aside>
